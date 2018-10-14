@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
+import { take, map, filter } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,8 @@ export class AppComponent implements OnInit {
   subscription: Subscription;
 
   ngOnInit() {
-    const obs = interval(1500);
+    const obs = interval(1000)
+                  .pipe(take(20), map(v => (v + 1) * 5), filter(v => v % 10 === 0));
     this.subscription = obs.subscribe(v => console.log(v));
   }
 
