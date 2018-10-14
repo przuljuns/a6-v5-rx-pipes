@@ -15,7 +15,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const obs = interval(1000)
-                  .pipe(take(20), map(v => (v + 1) * 5), filter(v => v % 10 === 0));
+                  .pipe(take(20),
+                        map(v => (v + 1) * 5),
+                        filter(v => v % 10 === 0));
     this.subscription = obs.subscribe(v => console.log(v));
   }
 
