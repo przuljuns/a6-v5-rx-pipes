@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PipesComponent implements OnInit {
 
   amount = 123.45;
+  date = new Date();
 
   constructor() { }
 
